@@ -8,6 +8,7 @@ public class AutoTiling {
 	
 	private static BufferedImage tileset = Image.getImage(Image.TILESET);
 	
+	private final static int stone = -2302756;
 	private final static int grass = -16744448;
 	private final static int sand = -989556;
 	private final static int water = -16776961;
@@ -20,11 +21,13 @@ public class AutoTiling {
 			for(int y = 0; y < tilemap.getHeight(); y++) {
 				
 				switch(tilemap.getRGB(x, y)) {
-				case grass: images[x][y] = selectTile(tilemap, x, y, sand, 0);
+				case stone: images[x][y] = selectTile(tilemap, x, y, grass, 0);
 					break;
-				case sand: images[x][y] = selectTile(tilemap, x, y, water, 90);
+				case grass: images[x][y] = selectTile(tilemap, x, y, sand, 90);
 					break;
-				case water: images[x][y] = tileset.getSubimage(240, 90, 30, 30);
+				case sand: images[x][y] = selectTile(tilemap, x, y, water, 180);
+					break;
+				case water: images[x][y] = tileset.getSubimage(330, 90, 30, 30);
 					break;
 				}
 			}

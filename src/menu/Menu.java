@@ -40,7 +40,7 @@ public class Menu {
 		g.fillRect(0, 0, (int) (GAME_WIDTH * Panel.GAME_SCALE_WIDTH),(int) (GAME_HEIGHT * Panel.GAME_SCALE_HEIGHT));
 		
 		Help.drawString(g, 110, 45f, "ETERNITY", new Color(255, 255, 255));
-		
+	
 		play.draw(g, MouseInputs.xPos, MouseInputs.yPos);
 		profil.draw(g, MouseInputs.xPos, MouseInputs.yPos);
 		options.draw(g, MouseInputs.xPos, MouseInputs.yPos);

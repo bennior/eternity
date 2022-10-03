@@ -12,6 +12,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.AffineTransform;
 import java.io.IOException;
 
+import inputs.KeyInputs;
 import inputs.MouseInputs;
 import main.Panel;
 
@@ -72,6 +73,10 @@ public class Help {
 	public static void resetPos() {
 		MouseInputs.xPos = 0;
 		MouseInputs.yPos = 0;
+	}
+	
+	public static void resetKey() {
+		KeyInputs.key = "";
 	}
 	
 	private static Font initFont() {

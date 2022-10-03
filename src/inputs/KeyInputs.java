@@ -7,7 +7,7 @@ public class KeyInputs implements KeyListener {
 	
 	public static boolean pressed;
 	
-	public static String key;
+	public static String key = "";
 	public static int keyCode;
 	public static char keyChar;
 	

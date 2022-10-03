@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import game.gameselection.GameSelection;
+import game.world.World;
 import inputs.KeyInputs;
 import inputs.MouseInputs;
 import menu.Menu;
@@ -16,8 +17,8 @@ public class Panel extends JPanel{
 	public static final int GAME_WIDTH = 960;
 	public static final int GAME_HEIGHT = 540;
 	public static final int DEFAULT_TILE_SIZE = 30;
-	public static final int TILES_IN_WIDTH = GAME_WIDTH / DEFAULT_TILE_SIZE;
-	public static final int TILES_IN_HEIGHT = GAME_HEIGHT / DEFAULT_TILE_SIZE;
+	public static final int TILES_IN_WIDTH = GAME_WIDTH / DEFAULT_TILE_SIZE; //32
+	public static final int TILES_IN_HEIGHT = GAME_HEIGHT / DEFAULT_TILE_SIZE; //18
 	public static float TILE_WIDTH = GAME_WIDTH / TILES_IN_WIDTH;
 	public static float TILE_HEIGHT = GAME_HEIGHT / TILES_IN_HEIGHT;
 	public static float GAME_SCALE_WIDTH = TILE_WIDTH / DEFAULT_TILE_SIZE;
@@ -26,12 +27,14 @@ public class Panel extends JPanel{
 //	private Color grass = new Color(0,128,0);
 //	private Color sand = new Color(240,230,140);
 //	private Color water = new Color(0,0,255);
+//	private Color stone = new Color(220, 220, 220);
 	
 	private MouseInputs mouseInputs;
 	private KeyInputs keyInputs;
 	private Menu menu;
 	private GameOptions options;
 	private GameSelection play;
+	private World world;
 	
 	public Panel() {
 		init();
@@ -44,7 +47,7 @@ public class Panel extends JPanel{
 		setBackground(new Color(0, 0, 0));
 		//Rendering		
 		switch(GameStates.currentGameState) {
-		case GAME: 
+		case GAME: world.draw(g);
 			break;
 		case MENU: menu.draw(g);
 			break;
@@ -59,7 +62,7 @@ public class Panel extends JPanel{
 	
 	public void update() {		
 		switch(GameStates.currentGameState) {
-		case GAME:
+		case GAME: world.update();
 			break;
 		case MENU: menu.update();
 			break;
@@ -82,7 +85,8 @@ public class Panel extends JPanel{
 		keyInputs = new KeyInputs();
 		menu = new Menu();
 		options = new GameOptions();
-		play = new GameSelection();
+		world = new World();
+		play = new GameSelection(world);
 		
 		addMouseMotionListener(mouseInputs);
 		addMouseListener(mouseInputs);

@@ -1,0 +1,16 @@
+lighting: SMOOTH
+animations: OFF
+shadows: OFF
+res: FULLSCREEN
+grass: BENDING
+music: 0.61636364
+sounds: 0.42909092
+ambient: 0.29090908
+creatures: 0.8181818
+up: W
+left: A
+right: D
+down: S
+inventory: E
+break: LEFT BUTTON
+place: RIGHT BUTTON
